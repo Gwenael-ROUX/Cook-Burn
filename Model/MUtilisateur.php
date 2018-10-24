@@ -27,6 +27,16 @@ Class MUtilisateur extends Base
             return $resultarray['ROLE'];
         }
     }
+    public function getEmail($id){
+        $query = mysqli_prepare($this->getDbLink(),'SELECT EMAIL FROM USER WHERE IDU =  ?');
+        if ($query) {
+            mysqli_stmt_bind_param($query, "s", $id);
+            mysqli_stmt_execute($query);
+            $result =mysqli_stmt_get_result($query);
+            $resultarray =$result->fetch_assoc();
+            return $resultarray['EMAIL'];
+        }
+    }
     public function inscription($pseudo,$email,$password){
         $query = mysqli_prepare($this->getDbLink(),"INSERT INTO USER (PSEUDO,EMAIL,PASSWORD,ROLE) VALUES (?,?,?,'MEMBER')");
         if ($query) {
