@@ -1,27 +1,3 @@
-<?php
-$step = $param[0];
-
-if ($step == 'PSEUDO'){
-    $erreur = '<div class="card-panel"><legend class="red-text text-darken-2">Pseudo déja utilisé veuillez réésayer avec un autre pseudo </legend></div>';
-    $couleur = 'card-panel red';
-}
-if ($step == 'PSEUDO_I'){
-    $erreur = '<div class="card-panel"><legend class="red-text text-darken-2">Renseigner Pseudo </legend></div>';
-    $couleur = 'card-panel red';
-}
-elseif ($step == 'MAIL'){
-    $erreur = '<div class="card-panel"><legend class="red-text text-darken-2">Email déja utilisé veuillez réésayer avec un autre email </legend></div>';
-    $couleur = 'card-panel red';
-}
-elseif ($step == 'MAIL_I'){
-    $erreur = '<div class="card-panel"><legend class="red-text text-darken-2">Renseigner email </legend></div>';
-    $couleur = 'card-panel red';
-}
-elseif ($step == 'SUCCESS'){
-    $erreur = '<div class="card-panel"><legend class="green-text text-darken-2">Compte creer avec succes , un mail contenant le mot de passe temporaire a été envoyé  </legend></div>';
-    $couleur = 'card-panel green';
-}
-?>
 <div class="text-center">
     <img class="mb-4" src="/View/bootstrap-4.1.3-dist/image/Logo.png" alt="Logo" width="100" height="100">
     <h1 class="h3 mb-3 font-weight-normal">Inscription d'un utilisateur</h1>
