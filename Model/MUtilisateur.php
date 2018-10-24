@@ -15,7 +15,7 @@ Class MUtilisateur extends Base
 
     }
 
-    public function getStatut($pseudo){
+    public function getRole($pseudo){
         $query = mysqli_prepare($this->getDbLink(),'SELECT ROLE FROM USER WHERE PSEUDO =  ?');
         if ($query) {
             mysqli_stmt_bind_param($query, "s", $pseudo);
