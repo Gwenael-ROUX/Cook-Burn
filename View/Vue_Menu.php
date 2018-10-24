@@ -11,7 +11,7 @@
                 <a class="nav-link text-white" href="/Index">Accueil<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/Recette">Les Recettes</a>
+                <a class="nav-link text-white" href="/Recette/listeRecette">Les Recettes</a>
             </li>
             <?php if (! $_SESSION['PSEUDO']) { ?>
             <li class="nav-item">
