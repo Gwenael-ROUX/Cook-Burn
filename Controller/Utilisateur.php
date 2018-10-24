@@ -33,8 +33,8 @@ class Utilisateur
 
                 try {
                     $id = $user->getIDFromLastQuery();
-                    $role = $user->getRole($pseudo);
-
+                    $role = $user->getRole($id);
+                    $_SESSION['ID']= $id;
                     $_SESSION['ROLE']= $role;
                     $_SESSION['PSEUDO']= $pseudo;
                 } catch (Exception $e) {
