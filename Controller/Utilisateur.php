@@ -34,8 +34,10 @@ class Utilisateur
                 try {
                     $id = $user->getIDFromLastQuery();
                     $role = $user->getRole($id);
+                    $email= $user->getEmail($id);
                     $_SESSION['ID']= $id;
                     $_SESSION['ROLE']= $role;
+                    $_SESSION['EMAIL']=$email;
                     $_SESSION['PSEUDO']= $pseudo;
                 } catch (Exception $e) {
                     echo $e->getMessage();
