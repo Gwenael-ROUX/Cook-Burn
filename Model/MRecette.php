@@ -29,7 +29,8 @@ class MRecette extends Base
     {
         $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM RECETTE");
         mysqli_stmt_execute($query);
-        return mysqli_stmt_get_result($query);
+        $result = mysqli_stmt_get_result($query);
+        return $result->fetch_assoc();
     }
 
     public function supprimerRecette($idr)
@@ -39,10 +40,10 @@ class MRecette extends Base
         mysqli_stmt_execute($query);
     }
 
-    public function ajouterRecette($nom_r, $nb_conviv, $descr_c, $descr_l, $etape)
+    public function ajouterRecette($idu, $nomr, $nbconviv, $descrc, $descrl, $etape)
     {
-        $query = mysqli_prepare($this->getDbLink(), "INSERT INTO RECETTE VALUES (null,?,?,?,?,?,0,'prive')");
-        mysqli_stmt_bind_param($query, "sisss", $nom_r, $nb_conviv, $descr_c, $descr_l, $etape);
+        $query = mysqli_prepare($this->getDbLink(), "INSERT INTO RECETTE VALUES (null,?,?,?,?,?,?,'PRIVE')");
+        mysqli_stmt_bind_param($query, "isisss", $idu,$nomr, $nbconviv, $descrc, $descrl, $etape);
         mysqli_stmt_execute($query);
         return mysqli_insert_id($this->getDbLink());
     }
