@@ -4,12 +4,13 @@
     <?= $_SESSION['PSEUDO']?>
     <h2>Email : </h2>
     <?= $_SESSION['EMAIL']?>
+    <h2>Modification du Mot de passe : </h2>
     <div class="text-center">
         <form class="form-control" action="/Utilisateur/changePwd" method="post">
-            <label for="oldPwd">Email address</label>
+            <label for="oldPwd" class="sr-only">Email address</label>
             <input type="text" id="oldPwd" class="form-control" placeholder="Ancien Mot de passe" required autofocus>
 
-            <label for="newPwd">Email address</label>
+            <label for="newPwd" class="sr-only">Email address</label>
             <input type="text" id="newPwd" class="form-control" placeholder="Nouveau Mot de passe" required autofocus>
 
             <div class =text-center>
