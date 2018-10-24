@@ -14,8 +14,15 @@ Class MUtilisateur extends Base
         }
 
     }
-    public function getIDFromLastQuery(){
-        return mysqli_insert_id($this->getDbLink());
+    public function getID($pseudo){
+        $query = mysqli_prepare($this->getDbLink(),'SELECT IDU FROM USER WHERE PSEUDO =  ?');
+        if ($query) {
+            mysqli_stmt_bind_param($query, "s", $pseudo);
+            mysqli_stmt_execute($query);
+            $result =mysqli_stmt_get_result($query);
+            $resultarray =$result->fetch_assoc();
+            return $resultarray['IDU'];
+        }
     }
     public function getRole($id){
         $query = mysqli_prepare($this->getDbLink(),'SELECT ROLE FROM USER WHERE IDU =  ?');

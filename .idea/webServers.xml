@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="01e3f91b-ab11-4fa8-8a0c-18efbf3f2319" name="ftp-petitrouxchauvygonand.alwaysdata.net" url="http://petitrouxchauvygonand.alwaysdata.net">
+        <fileTransfer host="ftp-petitrouxchauvygonand.alwaysdata.net" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -32,7 +32,7 @@ class Utilisateur
             if($user->connection($pseudo,$password)){
 
                 try {
-                    $id = $user->getIDFromLastQuery();
+                    $id = $user->getID($pseudo);
                     $role = $user->getRole($id);
                     $email= $user->getEmail($id);
                     $_SESSION['ID']= $id;
