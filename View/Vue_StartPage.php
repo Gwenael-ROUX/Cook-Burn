@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" href="/View/bootstrap-4.1.3-dist/image/Icon.png"/>
     <title>Hello, world!</title>
 </head>
-<body>
+<body class="text-center">
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
