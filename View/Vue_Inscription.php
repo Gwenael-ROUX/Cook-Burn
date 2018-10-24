@@ -22,21 +22,18 @@ elseif ($step == 'SUCCESS'){
     $couleur = 'card-panel green';
 }
 ?>
-<h1>Inscription d'un utilisateur</h1>
-<?php echo $erreur?>
-<form id="form" action="/Admin/inscription" method="post">
-         <div class="<?php echo $couleur?>">
-             <div class="card-panel white">
-                <br><strong><label class ="flow-text" for="pseudo">Pseudo</label></strong>
-                <input id="pseudo" type="text" name="pseudo" value=""/>
+<img class="mb-4" src="bootstrap-4.1.3-dist/image/Logo.png" alt="" width="72" height="72">
+<h1 class="h3 mb-3 font-weight-normal">Inscription d'un utilisateur</h1>
+<form id="form" class="form-signin" action="/Admin/inscription" method="post">
 
-                <br><strong><label class ="flow-text"  for="email">Email</label></strong>
-                <input id="email" type="email" name="email" value=""/>
+                 <label for="email" class="sr-only">Email address</label>
+                 <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
 
-            </div>
-        </div><br>
+                 <label for="pseudo" class="sr-only">Password</label>
+                 <input type="text" id="pseudo" class="form-control" required>
+
         <div>
-             <input type="submit" name="action" value="inscription"/>
-             <input type="reset" name="action" value="annuler"/>
+             <input class="btn btn-lg btn-primary btn-block" type="submit" name="action" value="inscription"/>
+             <input class="btn btn-lg btn-primary btn-block" type="reset" name="action" value="annuler"/>
         </div>
 </form>
