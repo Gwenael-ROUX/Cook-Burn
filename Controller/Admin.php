@@ -8,10 +8,10 @@ Class Admin {
         ];
 
         require_once __DIR__.'/../View/Vue_StartPage.php';
-        if ($_SESSION['STATUT']== 'ADMIN'){
+        if ($_SESSION['ROLE']== 'ADMIN'){
             require_once __DIR__.'/../View/Vue_Inscription.php';
         }else{
-            header("Location: /Erreur/statut/PasAdmin");
+            header("Location: /Erreur/role/PasAdmin");
             exit();
         }
 

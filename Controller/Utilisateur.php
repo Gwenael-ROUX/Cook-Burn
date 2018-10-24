@@ -32,13 +32,17 @@ class Utilisateur
             if($user->connection($pseudo,$password)){
 
                 try {
-                    $statut = $user->getStatut($pseudo);
-
+                    $id = $user->getID($pseudo);
+                    $role = $user->getRole($id);
+                    $email= $user->getEmail($id);
+                    $_SESSION['ID']= $id;
+                    $_SESSION['ROLE']= $role;
+                    $_SESSION['EMAIL']=$email;
+                    $_SESSION['PSEUDO']= $pseudo;
                 } catch (Exception $e) {
                     echo $e->getMessage();
                 }
-                $_SESSION['STATUT']= $statut;
-                $_SESSION['PSEUDO']= $pseudo;
+
 
                 header('Location: /Index');
                 exit();

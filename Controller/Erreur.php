@@ -11,7 +11,7 @@ class Erreur
     public function index(){
 
     }
-    public function statut($statut){
-        echo $statut[0];
+    public function role ($role){
+        echo $role[0];
     }
 }
