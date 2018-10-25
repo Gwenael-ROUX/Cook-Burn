@@ -11,7 +11,7 @@ class MRecette extends Base
 {
     public function getIngrRec($idr)
     {
-        $query = mysqli_prepare($this->getDbLink(), "SELECT NOM, NB_I FROM INGREDIENT I, ASSO1 A WHERE I.IDR = A.IDR AND I.IDR = ?");
+        $query = mysqli_prepare($this->getDbLink(), "SELECT NOM, QUANTITE FROM INGREDIENT I, ASSO1 A WHERE I.IDR = A.IDR AND I.IDR = ?");
         mysqli_stmt_bind_param($query, "is", $idr);
         mysqli_stmt_execute($query);
         return mysqli_stmt_get_result($query);
@@ -19,7 +19,7 @@ class MRecette extends Base
 
     public function getIdr($nomR, $idu)
     {
-        $query = mysqli_prepare($this->getDbLink(), "SELECT ID_R FROM RECETTE WHERE IDU = ? AND  NOMR = ?");
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDR FROM RECETTE WHERE IDU = ? AND  NOMR = ?");
         mysqli_stmt_bind_param($query, "is", $idu, $nomR);
         mysqli_stmt_execute($query);
         return mysqli_stmt_get_result($query);
@@ -35,7 +35,7 @@ class MRecette extends Base
 
     public function supprimerRecette($idr)
     {
-        $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE ID = ?");
+        $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE IDR = ?");
         mysqli_stmt_bind_param($query, "i", $idr);
         mysqli_stmt_execute($query);
     }
