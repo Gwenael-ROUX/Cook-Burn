@@ -60,7 +60,7 @@ class MRecette extends Base
     public function supprimerRecette($idr)
     {
         $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE IDR = ?");
-        mysqli_stmt_bind_param($query, "i", $idr);
+        mysqli_stmt_bind_param($query, "s", $idr);
         mysqli_stmt_execute($query);
     }
 
