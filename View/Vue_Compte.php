@@ -7,9 +7,9 @@
         <form action="/Utilisateur/changePwd" method="post">
             <div class="container">
                 <div class="col-4 mx-auto">
-                    <input type="text" id="oldPwd" class="form-control" placeholder="Ancien Mot de passe" required autofocus>
-                    <input type="text" id="newPwd" class="form-control" placeholder="Nouveau Mot de passe" required>
-                    <input type="text" id="ConfirmNewPwd" class="form-control" placeholder="Confirmer mot de passe" required><br/>
+                    <input type="text" id="oldPwd" name="oldPwd" class="form-control" placeholder="Ancien Mot de passe" required autofocus>
+                    <input type="text" id="newPwd" name="newPwd" class="form-control" placeholder="Nouveau Mot de passe" required>
+                    <input type="text" id="confirmNewPwd" name="confirmNewPwd" class="form-control" placeholder="Confirmer mot de passe" required><br/>
                     <input class="btn btn-lg btn-danger btn-block" type="submit" name="action" value="Changer de mot de passe"/>
                     <input class="btn btn-lg btn-danger btn-block" type="reset" name="action" value="Réinitialiser"/>
                 </div>
