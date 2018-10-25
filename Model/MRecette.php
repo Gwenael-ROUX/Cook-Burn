@@ -31,7 +31,8 @@ class MRecette extends Base
         mysqli_stmt_bind_param($query, "s", $idr);
         mysqli_stmt_execute($query);
         $result= mysqli_stmt_get_result($query);
-        return mysqli_fetch_assoc($result);
+        $resultarray= mysqli_fetch_assoc($result);
+        return $resultarray['PSEUDO'];
     }
 
     public function ListeRecette()
@@ -44,21 +45,6 @@ class MRecette extends Base
 
     public function searchRecette($recherche)
     {
-        $indice = 0;
-        $mot = '';
-        for ($i=0; $i < strlen($recherche); ++$i)
-        {
-            if(chaine[$i] == ' ')
-            {
-                $mot = '';
-                ++$indice;
-            }
-            else
-            {
-                $mot .= $recherche[$i];
-                $tab_mot[$indice] = $mot;
-            }
-        }
 
     }
 
@@ -76,4 +62,6 @@ class MRecette extends Base
         mysqli_stmt_execute($query);
         return mysqli_insert_id($this->getDbLink());
     }
+
+
 }
