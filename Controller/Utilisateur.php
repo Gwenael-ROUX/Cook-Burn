@@ -97,6 +97,22 @@ class Utilisateur
     }
 
     public function profil(){
-
+        $data= [
+            'titrePage'=>'Mon compte',
+        ];
+        require_once  __DIR__."/../View/Vue_StartPage.php";
+        require_once  __DIR__."/../View/Vue_Compte.php";
+        require_once  __DIR__."/../View/Vue_EndPage.php";
+    }
+    public function changePwd(){
+        $oldpwd = md5(filter_input(INPUT_POST,'oldPwd'));
+        $newpwd = md5(filter_input(INPUT_POST,'newPwd'));
+        $confirmpwd = md5(filter_input(INPUT_POST,'confirmNewPwd'));
+        $user = new MUtilisateur();
+        if ($user->connection($_SESSION['PSEUDO'],$oldpwd)) {
+            if ($newpwd == $confirmpwd) {
+                $user->MAJmotdepasse($_SESSION['EMAIL'],$newpwd);
+            }
+        }
     }
 }
