@@ -30,7 +30,7 @@ class MRecette extends Base
         $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM RECETTE");
         mysqli_stmt_execute($query);
         $result = mysqli_stmt_get_result($query);
-        return $result->fetch_assoc();
+        return $result;
     }
 
     public function supprimerRecette($idr)
