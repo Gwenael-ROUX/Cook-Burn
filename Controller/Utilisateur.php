@@ -97,6 +97,11 @@ class Utilisateur
     }
 
     public function profil(){
-
+        $data= [
+            'titrePage'=>'Mon compte',
+        ];
+        require_once  __DIR__."/../View/Vue_StartPage.php";
+        require_once  __DIR__."/../View/Vue_Compte.php";
+        require_once  __DIR__."/../View/Vue_EndPage.php";
     }
 }
