@@ -35,7 +35,8 @@ class Recette
         require_once  __DIR__.'/../View/Vue_StartPage.php';
 
         $mRecette = new MRecette();
-
+        $result = $mRecette->ListeRecette();
+        $total = mysqli_num_rows($result);
         require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
 
         require_once  __DIR__.'/../View/Vue_EndPage.php';
