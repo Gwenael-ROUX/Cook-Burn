@@ -42,8 +42,13 @@ class Recette
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
-
-
+    public function searchRecette()
+    {
+        $recherche = filter_input(INPUT_GET,'recherche');
+        $recette = new MRecette();
+        $recetteAffich = $recette->searchRecette($recherche);
+        return $recetteAffich;
+    }
 
     public function ajouterRecette(){
         $idu = $_SESSION['ID'];
