@@ -33,6 +33,26 @@ class MRecette extends Base
         return $result;
     }
 
+    public function searchRecette($recherche)
+    {
+        $indice = 0;
+        $mot = '';
+        for ($i=0; $i < strlen($recherche); ++$i)
+        {
+            if(chaine[$i] == ' ')
+            {
+                $mot = '';
+                ++$indice;
+            }
+            else
+            {
+                $mot .= $recherche[$i];
+                $tab_mot[$indice] = $mot;
+            }
+        }
+
+    }
+
     public function supprimerRecette($idr)
     {
         $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE IDR = ?");

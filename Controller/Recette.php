@@ -42,9 +42,7 @@ class Recette
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
-    public function showRecette (){
 
-    }
 
 
     public function ajouterRecette(){
