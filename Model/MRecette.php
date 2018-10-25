@@ -11,7 +11,7 @@ class MRecette extends Base
 {
     public function getIngrRec($idr)
     {
-        $query = mysqli_prepare($this->getDbLink(), "SELECT NOM, NB_I FROM INGREDIENT I, ASSO1 A WHERE I.IDR = A.IDR AND I.IDR = ?");
+        $query = mysqli_prepare($this->getDbLink(), "SELECT NOM, QUANTITE FROM INGREDIENT I, ASSO1 A WHERE I.IDR = A.IDR AND I.IDR = ?");
         mysqli_stmt_bind_param($query, "is", $idr);
         mysqli_stmt_execute($query);
         return mysqli_stmt_get_result($query);
@@ -19,10 +19,20 @@ class MRecette extends Base
 
     public function getIdr($nomR, $idu)
     {
-        $query = mysqli_prepare($this->getDbLink(), "SELECT ID_R FROM RECETTE WHERE IDU = ? AND  NOMR = ?");
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDR FROM RECETTE WHERE IDU = ? AND  NOMR = ?");
         mysqli_stmt_bind_param($query, "is", $idu, $nomR);
         mysqli_stmt_execute($query);
         return mysqli_stmt_get_result($query);
+    }
+
+    public function getAutor($idr)
+    {
+        $query = mysqli_prepare($this->getDbLink(),"SELECT PSEUDO FROM RECETTE R, USER U WHERE R.IDR=? AND R.IDU=U.IDU");
+        mysqli_stmt_bind_param($query, "s", $idr);
+        mysqli_stmt_execute($query);
+        $result= mysqli_stmt_get_result($query);
+        $resultarray= mysqli_fetch_assoc($result);
+        return $resultarray['PSEUDO'];
     }
 
     public function ListeRecette()
@@ -30,12 +40,17 @@ class MRecette extends Base
         $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM RECETTE");
         mysqli_stmt_execute($query);
         $result = mysqli_stmt_get_result($query);
-        return $result->fetch_assoc();
+        return $result;
+    }
+
+    public function searchRecette($recherche)
+    {
+
     }
 
     public function supprimerRecette($idr)
     {
-        $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE ID = ?");
+        $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE IDR = ?");
         mysqli_stmt_bind_param($query, "i", $idr);
         mysqli_stmt_execute($query);
     }
@@ -47,4 +62,6 @@ class MRecette extends Base
         mysqli_stmt_execute($query);
         return mysqli_insert_id($this->getDbLink());
     }
+
+
 }

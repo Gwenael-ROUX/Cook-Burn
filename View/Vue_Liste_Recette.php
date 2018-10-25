@@ -1,5 +1,14 @@
 <h1>Liste des recettes</h1>
 <div>
+    <?php
+        if ($total > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+    ?><a href="/Recette/showRecette/<?= $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?=$row['NOMR']?> Auteur : <?=$mRecette->getAuthor($row['IDR'])?>"</a>
+            }
+        }
+    ?>
+</div>
+<div>
     <footer aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
             <li class="page-item disabled">
