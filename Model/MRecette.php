@@ -30,7 +30,8 @@ class MRecette extends Base
         $query = mysqli_prepare($this->getDbLink(),"SELECT PSEUDO FROM RECETTE R, USER U WHERE R.IDR=? AND R.IDU=U.IDU");
         mysqli_stmt_bind_param($query, "s", $idr);
         mysqli_stmt_execute($query);
-        return mysqli_stmt_get_result($query);
+        $result= mysqli_stmt_get_result($query);
+        return mysqli_fetch_assoc($result);
     }
 
     public function ListeRecette()
