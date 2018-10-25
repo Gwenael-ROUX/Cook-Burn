@@ -17,7 +17,7 @@ class Recette
 
     public function creationRecette($param){
         $data= [
-            'titrePage'=>'CreationRecette',
+            'titrePage'=>'Creation de Recette',
         ];
 
         require_once  __DIR__.'/../View/Vue_StartPage.php';
@@ -29,10 +29,12 @@ class Recette
 
     public function listeRecette($param){
         $data= [
-            'titrePage'=>'CreationRecette',
+            'titrePage'=>'Liste des Recettes',
         ];
 
         require_once  __DIR__.'/../View/Vue_StartPage.php';
+
+        $mRecette = new MRecette();
 
         require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
 
