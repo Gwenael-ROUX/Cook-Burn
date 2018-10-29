@@ -80,8 +80,10 @@ Class MUtilisateur extends Base
     {
         $query = mysqli_prepare($this->getDbLink(), 'UPDATE USER SET PASSWORD =? WHERE EMAIL=? ');
         if ($query) {
-            mysqli_stmt_bind_param($query, "ss", md5($password), $email);
+            mysqli_stmt_bind_param($query, "ss", $password, $email);
             mysqli_stmt_execute($query);
+            return true;
         }
+        return false;
     }
 }
