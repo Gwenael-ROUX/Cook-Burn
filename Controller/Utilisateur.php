@@ -120,11 +120,12 @@ class Utilisateur
     }
     public function changePseudo(){
 
-        $newPseudo = md5(filter_input(INPUT_POST,'newEmail'));
-        $confirmPseudo = md5(filter_input(INPUT_POST,'confirmEmail'));
+        $newPseudo = filter_input(INPUT_POST,'newPseudo');
+        $confirmPseudo = filter_input(INPUT_POST,'confirmPseudo');
         $user = new MUtilisateur();
             if ($newPseudo == $confirmPseudo) {
-                $user->majPseudo($_SESSION['id'],$newPseudo);
+
+                $user->majPseudo($_SESSION['ID'],$newPseudo);
                 header('Location: /Utilisateur/deconnexion');
                 exit();
             }
