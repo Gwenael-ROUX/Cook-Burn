@@ -18,7 +18,7 @@
             <div class="col-4 mx-auto">
                 <input type="text" id="newEmail" name="newEmail" class="form-control" placeholder="New Email" required autofocus>
                 <input type="text" id="newEmail" name="confirmEmail" class="form-control" placeholder="Confirm Email" required>
-                <input class="btn btn-lg btn-danger btn-block" type="submit" name="action" value="Changer de pseudo"/>
+                <input class="btn btn-lg btn-danger btn-block" type="submit" name="action" value="Changer de mail"/>
                 <input class="btn btn-lg btn-danger btn-block" type="reset" name="action" value="Réinitialiser"/>
             </div>
         </div>
