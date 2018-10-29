@@ -82,8 +82,16 @@ Class MUtilisateur extends Base
         if ($query) {
             mysqli_stmt_bind_param($query, "ss", $password, $email);
             mysqli_stmt_execute($query);
-            return true;
+
         }
-        return false;
+
+    }
+    public function majPseudo($id, $pseudo)
+    {
+        $query = mysqli_prepare($this->getDbLink(), 'UPDATE USER SET PSEUDO =? WHERE IDU=? ');
+        if ($query) {
+            mysqli_stmt_bind_param($query, "si", $pseudo, $id);
+            mysqli_stmt_execute($query);
+        }
     }
 }
