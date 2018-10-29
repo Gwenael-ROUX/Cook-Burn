@@ -5,6 +5,7 @@
         <div class="container">
             <div class="col-4 mx-auto">
                 <input type="text" id="newPseudo" name="newPseudo" class="form-control" placeholder="Nouveau pseudo" required autofocus>
+                <input type="text" id="newPseudo" name="confirmPseudo" class="form-control" placeholder="Confirm pseudo" required>
                 <input class="btn btn-lg btn-danger btn-block" type="submit" name="action" value="Changer de pseudo"/>
                 <input class="btn btn-lg btn-danger btn-block" type="reset" name="action" value="Réinitialiser"/>
             </div>
