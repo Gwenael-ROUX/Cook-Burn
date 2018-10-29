@@ -65,6 +65,7 @@ class Utilisateur
     public function deconnexion(){
         session_destroy();
         header('Location: /Index');
+        exit();
     }
 
     public function mdpOublie(){
@@ -92,7 +93,7 @@ class Utilisateur
             $message = 'Bonjour ' . ',' . PHP_EOL;
             $message .= 'Password : ' . $password . PHP_EOL;
             mail($email, 'Nouveau mot de passe', $message, $headers);
-            $user->MAJmotdepasse($email, $password);
+            $user->MAJmotdepasse($email, md5($password));
         }
     }
 
@@ -111,8 +112,10 @@ class Utilisateur
         $user = new MUtilisateur();
         if ($user->connection($_SESSION['PSEUDO'],$oldpwd)) {
             if ($newpwd == $confirmpwd) {
-                $user->MAJmotdepasse($_SESSION['EMAIL'],$newpwd);
-            }
+                    $user->MAJmotdepasse($_SESSION['EMAIL'],$newpwd);
+                    header('Location: /Utilisateur/deconnexion');
+                    exit();
+                }
         }
     }
 }
