@@ -94,4 +94,12 @@ Class MUtilisateur extends Base
             mysqli_stmt_execute($query);
         }
     }
+    public function majEmail($id, $email)
+    {
+        $query = mysqli_prepare($this->getDbLink(), 'UPDATE USER SET EMAIL =? WHERE IDU=? ');
+        if ($query) {
+            mysqli_stmt_bind_param($query, "si", $email, $id);
+            mysqli_stmt_execute($query);
+        }
+    }
 }
