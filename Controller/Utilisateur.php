@@ -131,4 +131,16 @@ class Utilisateur
             }
 
     }
+    public function changeEmail(){
+
+        $newEmail = filter_input(INPUT_POST,'newEmail');
+        $confirmEmail = filter_input(INPUT_POST,'confirmEmail');
+        $user = new MUtilisateur();
+        if ($newEmail == $confirmEmail) {
+            $user->majEmail($_SESSION['ID'],$newEmail);
+            header('Location: /Utilisateur/deconnexion');
+            exit();
+        }
+
+    }
 }
