@@ -119,16 +119,15 @@ class Utilisateur
         }
     }
     public function changePseudo(){
-        $oldPseudo = md5(filter_input(INPUT_POST,'oldPwd'));
-        $newPseudo = md5(filter_input(INPUT_POST,'newPwd'));
-        $confirmPseudo = md5(filter_input(INPUT_POST,'confirmNewPwd'));
+
+        $newPseudo = md5(filter_input(INPUT_POST,'newEmail'));
+        $confirmPseudo = md5(filter_input(INPUT_POST,'confirmEmail'));
         $user = new MUtilisateur();
-        if ($_SESSION['PSEUDO'] == $oldPseudo) {
             if ($newPseudo == $confirmPseudo) {
                 $user->majPseudo($_SESSION['id'],$newPseudo);
                 header('Location: /Utilisateur/deconnexion');
                 exit();
             }
-        }
+
     }
 }
