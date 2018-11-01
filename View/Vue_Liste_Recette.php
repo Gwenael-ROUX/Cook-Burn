@@ -1,11 +1,12 @@
 <h1>Liste des recettes</h1>
 <div>
     <?php
-        if ($total > 0) {
-            while ($row = mysqli_fetch_array($result)) {
-    ?><a href="/Recette/afficherRecette/<?= $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?=$row['NOMR']?> Auteur : <?=$mRecette->getAuthor($row['IDR'])?>"</a>
-      <?php }
-        } ?>
+    if ($total > 0) {
+        while ($row = mysqli_fetch_assoc($result)) { ?>
+    <label> Auteur : <?php echo $mRecette->getAuthor($row['IDR'])?> </label><br/>
+            <a href="/Recette/afficherRecette/<?php $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?php echo $row['NOMR']?> "/></a><br/><br/>
+  <?php }
+    } ?>
 </div>
 <div>
     <footer aria-label="Page navigation example">
@@ -21,4 +22,4 @@
             </li>
         </ul>
     </footer>
-<div/>
+</div>

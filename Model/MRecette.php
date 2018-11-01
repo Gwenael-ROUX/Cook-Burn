@@ -25,10 +25,10 @@ class MRecette extends Base
         return mysqli_stmt_get_result($query);
     }
 
-    public function getAutor($idr)
+    public function getAuthor($idr)
     {
         $query = mysqli_prepare($this->getDbLink(),"SELECT PSEUDO FROM RECETTE R, USER U WHERE R.IDR=? AND R.IDU=U.IDU");
-        mysqli_stmt_bind_param($query, "s", $idr);
+        mysqli_stmt_bind_param($query, "i", $idr);
         mysqli_stmt_execute($query);
         $result= mysqli_stmt_get_result($query);
         $resultarray= mysqli_fetch_assoc($result);
@@ -37,7 +37,7 @@ class MRecette extends Base
 
     public function ListeRecette()
     {
-        $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM RECETTE");
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDR, NOMR FROM RECETTE");
         mysqli_stmt_execute($query);
         $result = mysqli_stmt_get_result($query);
         return $result;
