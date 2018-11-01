@@ -42,13 +42,16 @@ class Recette
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
-    public function afficherRecette ($idR){
+    public function afficherRecette ($idr){
         $data= [
-            'titrePage' => $idR,
+            'titrePage' => $idr,
         ];
         require_once  __DIR__.'/../View/Vue_StartPage.php';
         $mRecette = new MRecette();
-        $result = $mRecette->
+        $result = $mRecette->afficherRecette($idr);
+        require_once  __DIR__.'/../View/Vue_Recette.php';
+
+        require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
     public function searchRecette()
