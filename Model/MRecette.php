@@ -57,6 +57,15 @@ class MRecette extends Base
         return $result;
     }
 
+    public function afficherRecette($idr)
+    {
+        $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM RECETTE WHERE IDR = ?");
+        mysqli_stmt_bind_param($query, "i", $idr);
+        mysqli_stmt_execute($query);
+        $result= mysqli_stmt_get_result($query);
+        return mysqli_fetch_assoc($result)
+    }
+
     public function supprimerRecette($idr)
     {
         $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE IDR = ?");
