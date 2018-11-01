@@ -4,9 +4,8 @@
         if ($total > 0) {
             while ($row = mysqli_fetch_array($result)) {
     ?><a href="/Recette/afficherRecette/<?= $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?=$row['NOMR']?> Auteur : <?=$mRecette->getAuthor($row['IDR'])?>"</a>
-            }
-        }
-    ?>
+      <?php }
+        } ?>
 </div>
 <div>
     <footer aria-label="Page navigation example">
@@ -22,4 +21,4 @@
             </li>
         </ul>
     </footer>
-</div>
+<div/>
