@@ -42,12 +42,13 @@ class Recette
     }
 
     public function afficherRecette ($idr){
-        $data= [
-            'titrePage' => $idr,
-        ];
-        require_once  __DIR__.'/../View/Vue_StartPage.php';
         $mRecette = new MRecette();
         $result = $mRecette->afficherRecette($idr);
+
+        $data= [
+            'titrePage' => $result['NOMR'],
+        ];
+        require_once  __DIR__.'/../View/Vue_StartPage.php';
         require_once  __DIR__.'/../View/Vue_Recette.php';
 
         require_once  __DIR__.'/../View/Vue_EndPage.php';

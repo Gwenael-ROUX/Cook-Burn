@@ -4,7 +4,7 @@
     if ($total > 0) {
         while ($row = mysqli_fetch_assoc($result)) { ?>
     <label> Auteur : <?php echo $mRecette->getAuthor($row['IDR'])?> </label><br/>
-            <a href="/Recette/afficherRecette/<?php $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?php echo $row['NOMR']?> "/></a><br/><br/>
+            <a href="/Recette/afficherRecette/<?php echo $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?php echo $row['NOMR']?> "/></a><br/><br/>
   <?php }
     } ?>
 </div>

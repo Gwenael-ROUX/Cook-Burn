@@ -1,4 +1,4 @@
-<h1>  <?php echo $data['NomRecette'] ?></h1>
+<h1>  <?php echo $result['NOMR'] ?></h1>
 <h2>Nombres de convives :</h2>
 <?= $data['nb_i'];?>
 <h2>Ingrédients :</h2>
