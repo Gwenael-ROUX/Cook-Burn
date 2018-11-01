@@ -3,7 +3,7 @@
     <?php
         if ($total > 0) {
             while ($row = mysqli_fetch_array($result)) {
-    ?><a href="/Recette/showRecette/<?= $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?=$row['NOMR']?> Auteur : <?=$mRecette->getAuthor($row['IDR'])?>"</a>
+    ?><a href="/Recette/afficherRecette/<?= $row['IDR']?>"><input type="button" class="waves-effect waves-light btn" value="<?=$row['NOMR']?> Auteur : <?=$mRecette->getAuthor($row['IDR'])?>"</a>
             }
         }
     ?>
