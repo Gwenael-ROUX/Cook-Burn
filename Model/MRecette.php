@@ -63,7 +63,7 @@ class MRecette extends Base
         mysqli_stmt_bind_param($query, "i", $idr);
         mysqli_stmt_execute($query);
         $result= mysqli_stmt_get_result($query);
-        return mysqli_fetch_assoc($result)
+        return mysqli_fetch_assoc($result);
     }
 
     public function supprimerRecette($idr)
