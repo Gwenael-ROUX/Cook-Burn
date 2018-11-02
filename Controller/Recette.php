@@ -42,8 +42,12 @@ class Recette
     }
 
     public function afficherRecette ($idr){
+        if (method_exists($idr, 'Controller/afficherRecette')){
+            $param = array_slice($idr, 3);
+            $idr->Controller/afficherRecette($idr[0]);
+        }
         $mRecette = new MRecette();
-        $result = $mRecette->afficherRecette($idr);
+        $result = $mRecette->afficherRecette($idr[0]);
 
         $data= [
             'titrePage' => $result['NOMR'],

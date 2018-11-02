@@ -14,4 +14,4 @@
 <a href="/Reseau" class="waves-effect waves-light btn">Partager</a>
 <a href="/Compte" class="waves-effect waves-light btn">Ajouter à mes favoris</a>
 <h2>Nom du créateur :</h2>
-<?= $mRecette->getAuthor($row['IDR']);?>
+<p><? echo $mRecette->getAuthor($result['IDR']);?></p>
