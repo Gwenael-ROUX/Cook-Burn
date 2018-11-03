@@ -58,15 +58,17 @@ class MRecette extends Base
         if (empty($recherche))
         {
             $query = mysqli_prepare($this->getDbLink(), 'SELECT IDR,NOMR FROM RECETTE ORDER BY IDR DESC');
+            mysqli_stmt_execute($query);
+            $result = mysqli_stmt_get_result($query);
         }
         else
         {
-            $query = mysqli_prepare($this->getDbLink(), 'SELECT * FROM RECETTE R, ASSO1 A, INGREDIENT I WHERE 
-                                                                R.IDR = A.IDR AND A.IDI = I.IDI AND CONCAT(R.NOMR, R.DESCR_C, R.DESCR_L,I.NOM) LIKE "%?%" ORDER BY R.IDR DESC');
-            mysqli_stmt_bind_param($query, "s",$recherche);
+            $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM RECETTE R, ASSO1 A, INGREDIENT I WHERE 
+                                                                R.IDR = A.IDR AND A.IDI = I.IDI AND CONCAT(R.NOMR, R.DESCR_C, R.DESCR_L,I.NOM) LIKE '%".$recherche."%'ORDER BY R.IDR DESC");
+            mysqli_stmt_execute($query);
+            $result = mysqli_stmt_get_result($query);
         }
-        mysqli_stmt_execute($query);
-        $result = mysqli_stmt_get_result($query);
+
         return $result;
     }
 
@@ -82,7 +84,7 @@ class MRecette extends Base
     public function supprimerRecette($idr)
     {
         $query = mysqli_prepare($this->getDbLink(), "DELETE FROM RECETTE WHERE IDR = ?");
-        mysqli_stmt_bind_param($query, "s", $idr);
+        mysqli_stmt_bind_param($query, "i", $idr);
         mysqli_stmt_execute($query);
     }
 
