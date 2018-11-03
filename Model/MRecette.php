@@ -37,16 +37,11 @@ class MRecette extends Base
 
     public function getNbBurn($idr)
     {
-        try {
-            $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM BURN WHERE IDR=?");
-            mysqli_stmt_bind_param($query, "i", $idr);
-            mysqli_stmt_execute($query);
-            $result = mysqli_stmt_get_result($query);
-            $total = mysqli_num_rows($result);
-        }
-        catch (mysqli_sql_exception $exception) {
-            $total = 0;
-        }
+        $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM BURN WHERE IDR=?");
+        mysqli_stmt_bind_param($query, "i", $idr);
+        mysqli_stmt_execute($query);
+        $result = mysqli_stmt_get_result($query);
+        $total = mysqli_num_rows($result);
         return $total;
     }
 
@@ -98,14 +93,15 @@ class MRecette extends Base
 
     public function verifBurn ($idr, $idu)
     {
-        try {
-            $query = mysqli_prepare($this->getDbLink(), "SELECT IDB FROM BURN WHERE IDR=? AND IDU=?");
-            mysqli_stmt_bind_param($query, "ii", $idr, $idu);
-            mysqli_stmt_execute($query);
-            $bool = true;
-        } catch (mysqli_sql_exception $e) {
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDB FROM BURN WHERE IDR=? AND IDU=?");
+        mysqli_stmt_bind_param($query, "ii", $idr, $idu);
+        mysqli_stmt_execute($query);
+        $result = mysqli_stmt_get_result($query);
+        $total = mysqli_num_rows($result);
+        if ($total == 0)
             $bool = false;
-        }
+        else
+            $bool = true;
         return $bool;
     }
 

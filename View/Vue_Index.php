@@ -1,3 +1,16 @@
+<div class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner w-100">
+        <div class="carousel-item active">
+            <img src="/View/bootstrap-4.1.3-dist/image/background1.jpg" class="first-slide">
+        </div>
+        <div class="carousel-item">
+            <img class="second-slide" src="/View/bootstrap-4.1.3-dist/image/background2.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="third-slide " src="/View/bootstrap-4.1.3-dist/image/background3.jpg" alt="Third slide">
+        </div>
+    </div>
+</div>
 <h1>Index</h1>
 <?php echo $error; ?>
 <a href="/Admin" class="waves-effect waves-light btn">button</a>
