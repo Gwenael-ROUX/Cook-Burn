@@ -108,5 +108,11 @@ class Recette
             $param = array_slice($id, 4);
             $id->Controller/burning($id[0], $id[1]);
         }
+        $mRecette = new MRecette();
+        if ($mRecette->verifBurn($id[0], $id[1]))
+            header('Location: ../Controller/Recette');
+        else{
+            $mRecette->ajouterBurn($id[0], $id[1]);
+        }
     }
 }
