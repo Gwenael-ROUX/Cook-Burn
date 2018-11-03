@@ -101,4 +101,12 @@ class Recette
         }
     }
 
+    public function burning ($id)
+    {
+        if (method_exists($id, 'Controller/Recette/burning')){
+            $param = array_slice($id, 3);
+            $param = array_slice($id, 4);
+            $id->Controller/burning($id[0], $id[1]);
+        }
+    }
 }
