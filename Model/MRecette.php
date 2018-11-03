@@ -95,4 +95,18 @@ class MRecette extends Base
         mysqli_stmt_execute($query);
         return mysqli_insert_id($this->getDbLink());
     }
+
+    public function verifBurn ($idr, $idu)
+    {
+        try {
+            $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM BURN WHERE IDR=? AND IDU=?");
+            mysqli_stmt_bind_param($query, "ii", $idr, $idu);
+            mysqli_stmt_execute($query);
+            $bool = true;
+        }
+        catch (mysqli_sql_exception $e){
+            $bool = false;
+        }
+        return $bool
+    }
 }
