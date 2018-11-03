@@ -10,7 +10,7 @@
 <h2>Etapes :</h2>
 <?= $result['ETAPES'];?> <br/><br/>
 <?php if (! $_SESSION['PSEUDO'])
-          echo '<a href="../../Controller/Utilisateur" class="waves-effect waves-light btn">Ajouter un burn</a>';
+          echo '<a href="../../Utilisateur" class="waves-effect waves-light btn">Ajouter un burn</a>';
       else
           echo '<a href="/Recette/burning/'.$result['IDR'].'/'.$_SESSION['ID'].'" class="waves-effect waves-light btn">Ajouter un burn</a>';
       ?>

@@ -42,10 +42,6 @@ class Recette
     }
 
     public function afficherRecette ($idr){
-        if (method_exists($idr, 'Controller/afficherRecette')){
-            $param = array_slice($idr, 3);
-            $idr->Controller/afficherRecette($idr[0]);
-        }
         $mRecette = new MRecette();
         $result = $mRecette->afficherRecette($idr[0]);
 
@@ -103,16 +99,15 @@ class Recette
 
     public function burning ($id)
     {
-        if (method_exists($id, 'Controller/Recette/burning')){
-            $param = array_slice($id, 3);
-            $param = array_slice($id, 4);
-            $id->Controller/burning($id[0], $id[1]);
-        }
         $mRecette = new MRecette();
-        if ($mRecette->verifBurn($id[0], $id[1]))
-            header('Location: ../Controller/Recette');
+        if ($mRecette->verifBurn($id[0], $id[1])) {
+            header("Location: ../../afficherRecette/$id[0]");
+            exit;
+        }
         else{
             $mRecette->ajouterBurn($id[0], $id[1]);
+            header("Location: ../../afficherRecette/$id[0]");
+            exit;
         }
     }
 }

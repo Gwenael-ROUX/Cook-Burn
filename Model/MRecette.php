@@ -99,7 +99,7 @@ class MRecette extends Base
     public function verifBurn ($idr, $idu)
     {
         try {
-            $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM BURN WHERE IDR=? AND IDU=?");
+            $query = mysqli_prepare($this->getDbLink(), "SELECT IDB FROM BURN WHERE IDR=? AND IDU=?");
             mysqli_stmt_bind_param($query, "ii", $idr, $idu);
             mysqli_stmt_execute($query);
             $bool = true;
