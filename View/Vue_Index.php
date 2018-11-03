@@ -1,6 +1,8 @@
 <h1>Index</h1>
 <?php echo $error; ?>
-<a href="/Admin" class="waves-effect waves-light btn">button</a>
+<?php if ($_SESSION['ROLE'] == 'ADMIN'){ ?>
+    <a href="/Admin" class="waves-effect waves-light btn">Page d'administateur</a>
+<?php }?>
 <div>
     <h2>Description de notre service</h2>
     <p class="flow-text">Bienvenue sur notre site Cook & Burn !</br>Merci de nous avoir fait confiance pour la qualité de nous barbecue,
