@@ -13,7 +13,7 @@
 </div>
 <h1>Index</h1>
 <?php echo $error;
-if ($_SESSION['ID'])
+if ($_SESSION['ID'] && $_SESSION['ROLE']=='ADMIN')
     echo '<a href="/Admin" class="waves-effect waves-light btn">Inscription</a>'
 ?>
 <div>
