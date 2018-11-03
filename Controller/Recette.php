@@ -62,9 +62,9 @@ class Recette
         require_once  __DIR__.'/../View/Vue_StartPage.php';
         $recherche = filter_input(INPUT_POST,'recherche');
         var_dump($recherche);
-        $recette = new MRecette();
-        $recetteAffich = $recette->searchRecette($recherche);
-        $total = mysqli_num_rows($recetteAffich);
+        $mRecette = new MRecette();
+        $result = $mRecette->searchRecette($recherche);
+        $total = mysqli_num_rows($result);
         require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }

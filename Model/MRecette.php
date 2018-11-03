@@ -55,13 +55,16 @@ class MRecette extends Base
 
     public function searchRecette($recherche)
     {
-        $query = mysqli_prepare($this->getDbLink(), 'SELECT IDR FROM RECETTE ORDER BY IDR DESC');
-        if(isset($recherche) AND !empty($recherche))
+        if (empty($recherche))
         {
-            $query = mysqli_prepare($this->getDbLink(), 'SELECT R.IDR FROM RECETTE R, ASSO1 A, INGREDIENT I WHERE 
-                                                                R.IDR = A.IDR AND A.IDI = I.IDI AND CONCAT(R.NOMR, R.DESCR_C, R.DESCR_L,I.NOM) LIKE %.?.% ORDER BY id DESC');
+            $query = mysqli_prepare($this->getDbLink(), 'SELECT IDR,NOMR FROM RECETTE ORDER BY IDR DESC');
         }
-        mysqli_stmt_bind_param($query, "s",$recherche);
+        else
+        {
+            $query = mysqli_prepare($this->getDbLink(), 'SELECT * FROM RECETTE R, ASSO1 A, INGREDIENT I WHERE 
+                                                                R.IDR = A.IDR AND A.IDI = I.IDI AND CONCAT(R.NOMR, R.DESCR_C, R.DESCR_L,I.NOM) LIKE "%?%" ORDER BY R.IDR DESC');
+            mysqli_stmt_bind_param($query, "s",$recherche);
+        }
         mysqli_stmt_execute($query);
         $result = mysqli_stmt_get_result($query);
         return $result;
