@@ -56,10 +56,16 @@ class Recette
 
     public function searchRecette()
     {
+        $data= [
+            'titrePage'=>'Recherche Recette',
+        ];
+        require_once  __DIR__.'/../View/Vue_StartPage.php';
         $recherche = filter_input(INPUT_GET,'recherche');
         $recette = new MRecette();
         $recetteAffich = $recette->searchRecette($recherche);
-        return $recetteAffich;
+        $total = mysqli_num_rows($recetteAffich);
+        require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
+        require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
     public function ajouterRecette(){

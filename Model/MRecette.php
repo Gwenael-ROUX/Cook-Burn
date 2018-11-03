@@ -61,7 +61,7 @@ class MRecette extends Base
             $query = mysqli_prepare($this->getDbLink(), 'SELECT R.IDR FROM RECETTE R, ASSO1 A, INGREDIENT I WHERE 
                                                                 R.IDR = A.IDR AND A.IDI = I.IDI AND CONCAT(R.NOMR, R.DESCR_C, R.DESCR_L,I.NOM) LIKE %.?.% ORDER BY id DESC');
         }
-        mysqli_stmt_bind_param($query, "i", $recherche);
+        mysqli_stmt_bind_param($query, "s",$recherche);
         mysqli_stmt_execute($query);
         $result = mysqli_stmt_get_result($query);
         return $result;
@@ -70,7 +70,7 @@ class MRecette extends Base
     public function afficherRecette($idr)
     {
         $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM RECETTE WHERE IDR = ?");
-        mysqli_stmt_bind_param($query, "s", $idr);
+        mysqli_stmt_bind_param($query, "i", $idr);
         mysqli_stmt_execute($query);
         $result= mysqli_stmt_get_result($query);
         return mysqli_fetch_assoc($result);
