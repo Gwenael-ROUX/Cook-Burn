@@ -24,7 +24,7 @@ if (empty($url)){
 
         }
     }
-    header('Location: /Index');
+    header('Location: /Erreur/erreur404');
 
 }
 
