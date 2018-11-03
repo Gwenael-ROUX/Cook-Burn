@@ -60,7 +60,8 @@ class Recette
             'titrePage'=>'Recherche Recette',
         ];
         require_once  __DIR__.'/../View/Vue_StartPage.php';
-        $recherche = filter_input(INPUT_GET,'recherche');
+        $recherche = filter_input(INPUT_POST,'recherche');
+        var_dump($recherche);
         $recette = new MRecette();
         $recetteAffich = $recette->searchRecette($recherche);
         $total = mysqli_num_rows($recetteAffich);
