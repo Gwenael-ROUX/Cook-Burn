@@ -12,8 +12,10 @@
     </div>
 </div>
 <h1>Index</h1>
-<?php echo $error; ?>
-<a href="/Admin" class="waves-effect waves-light btn">button</a>
+<?php echo $error;
+if ($_SESSION['ID'])
+    echo '<a href="/Admin" class="waves-effect waves-light btn">Inscription</a>'
+?>
 <div>
     <h2>Description de notre service</h2>
     <p class="flow-text">Bienvenue sur notre site Cook & Burn !</br>Merci de nous avoir fait confiance pour la qualité de nous barbecue,
