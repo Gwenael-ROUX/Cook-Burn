@@ -11,7 +11,7 @@ Class Admin {
         if ($_SESSION['ROLE']== 'ADMIN'){
             require_once __DIR__.'/../View/Vue_Inscription.php';
         }else{
-            header("Location: /Erreur/role/PasAdmin");
+            header("Location: /Erreur/pasAdmin");
             exit();
         }
 

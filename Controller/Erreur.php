@@ -11,8 +11,13 @@ class Erreur
     public function index(){
 
     }
-    public function role ($role){
-        echo $role[0];
+    public function pasAdmin (){
+        $data= [
+            'titrePage'=>'Pas Admin',
+            'text'=>'Veuillez vous connectez en tant qu\'administateur',
+        ];
+        require_once __DIR__. '/../View/Vue_Error.php';
+        require_once __DIR__. '/../View/Vue_EndPage.php';
     }
     public function erreur404(){
         require_once __DIR__. '/../View/Vue_Error404.php';
