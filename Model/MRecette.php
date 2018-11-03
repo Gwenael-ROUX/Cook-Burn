@@ -35,6 +35,21 @@ class MRecette extends Base
         return $resultarray['PSEUDO'];
     }
 
+    public function getNbBurn($idr)
+    {
+        try {
+            $query = mysqli_prepare($this->getDbLink(), "SELECT * FROM BURN WHERE IDR=?");
+            mysqli_stmt_bind_param($query, "i", $idr);
+            mysqli_stmt_execute($query);
+            $result = mysqli_stmt_get_result($query);
+            $total = mysqli_num_rows($result);
+        }
+        catch (mysqli_sql_exception $exception) {
+            $total = 0;
+        }
+        return $total;
+    }
+
     public function ListeRecette()
     {
         $query = mysqli_prepare($this->getDbLink(), "SELECT IDR, NOMR FROM RECETTE");

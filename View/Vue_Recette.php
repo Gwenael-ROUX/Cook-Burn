@@ -8,9 +8,9 @@
 <h2>Description longue :</h2>
 <?= $result['DESCR_L'];?>
 <h2>Etapes :</h2>
-<?= $result['ETAPES'];?>
+<?= $result['ETAPES'];?> <br/>
 <a href="/Recette/burning" class="waves-effect waves-light btn">Ajouter un burn</a>
-
+<?= $mRecette->getNbBurn($result['IDR']); ?>
 <a href="/Reseau" class="waves-effect waves-light btn">Partager</a>
 <a href="/Compte" class="waves-effect waves-light btn">Ajouter à mes favoris</a>
 <h2>Nom du créateur :</h2>
