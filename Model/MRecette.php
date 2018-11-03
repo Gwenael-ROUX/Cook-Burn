@@ -103,10 +103,16 @@ class MRecette extends Base
             mysqli_stmt_bind_param($query, "ii", $idr, $idu);
             mysqli_stmt_execute($query);
             $bool = true;
-        }
-        catch (mysqli_sql_exception $e){
+        } catch (mysqli_sql_exception $e) {
             $bool = false;
         }
-        return $bool
+        return $bool;
+    }
+
+    public function ajouterBurn ($idr, $idu)
+    {
+        $query = mysqli_prepare ($this->getDbLink(), 'INSERT INTO BURN VALUES (null, ?, ?)');
+        mysqli_stmt_bind_param($query, 'ii', $idu,$idr);
+        mysqli_stmt_execute($query);
     }
 }
