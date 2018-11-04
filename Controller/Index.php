@@ -1,4 +1,5 @@
 <?php
+include  __DIR__."/../Model/MRecette.php";
 Class Index {
     public function index($param = ''){
         $data= [
