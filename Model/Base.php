@@ -23,70 +23,20 @@ class Base
     */
     public function __construct()
     {
-
+        /* Definition des variables de connection a la base de donnée */
         $host = 'mysql-petitrouxchauvygonand.alwaysdata.net';
         $user = '167749_user';
         $pwd = '123';
         $dbname = 'petitrouxchauvygonand_php';
-
+        /* Essaie de la connection au serveur de la base de données */
         $dbLink = mysqli_connect($host, $user, $pwd)
         or die('Echec lors de la connection au server : ' . mysqli_connect_error());
+        /* Selection de la base de données */
         mysqli_select_db($dbLink, $dbname)
         or die('Echec lors de la selection de la base de donnnee : ' . mysqli_error($dbLink));
+        /* Affiche l'erreur si il y en a une */
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        /* Affectation de dblink msqli a l'atribut */
         $this->dbLink = $dbLink;
     }
-
-    /*/**
-     * @param $pseudo string
-     * @param $email string
-     * @param $password string
-
-    public function putQueryAddUser($pseudo, $email, $password){
-        $this->query = 'INSERT INTO USER (PSEUDO,EMAIL,PASSWORD,ROLE) VALUES (\'' . $pseudo . '\', \'' . $email . '\', \''
-            . $password. '\', \''. 'MEMBER'  . '\'' . ')';
-    }
-
-    /**
-     * @param $pseudo string
-     * @param $nomR string
-     * @param $nbConviv int
-     * @param $descrC string
-     * @param $descrL string
-     * @param $ingred string
-     * @param $etape string
-
-    public function putQueryAddRecette($pseudo, $nomR, $nbConviv, $descrC, $descrL, $ingred, $etape){
-        $this->query = "INSERT INTO RECETTE (CREATEUR,NOM_R,NB_CONVIV,DESCR_C,DESCR_L,INGREDIENTS,ETAPES, BURNS, STATUT) VALUES ('" . $pseudo . "','" . $nomR . "','"
-            . $nbConviv . "','"  . $descrC. "','" . $descrL . "','"  . $ingred .  "','"  . $etape . "','0','ATTENTE')";
-    }
-
-    /**
-     * @param $pseudo string
-     * @param $password string
-
-    public function putQueryChangePwd ($pseudo, $password){
-        $this->query = "UPDATE USER SET PASSWORD = '".$password . "' WHERE PSEUDO = '". $pseudo ."'";
-
-    }
-
-    /**
-     * @param $pseudo string
-     * @param $email string
-
-    public function putQueryChangeEmail ($pseudo, $email){
-        $this->query = "UPDATE USER SET EMAIL = '".$email . "' WHERE PSEUDO = '". $pseudo ."'";
-    }
-
-    /**
-     * @param $email string
-     * @param $pseudo string
-     public function putQueryChangePseudo ($email , $pseudo){
-        $this->query = "UPDATE USER SET PSEUDO = '". $pseudo . "' WHERE EMAIL = '". $email ."'";
-    }
-
-    /*
-     * insert () permet d'inserer la requete dans la base de donnée
-     */
-
 }
