@@ -2,7 +2,10 @@
 
 include_once __DIR__.'/../Model/MUtilisateur.php';
 Class Admin {
-    /* Fonction par defaut */
+
+    /**
+     * Fonction par defaut
+     */
     public function index (){
 
         /* Definition du tableau comportant les informations necessaire aux vues */
@@ -26,7 +29,9 @@ Class Admin {
         require_once __DIR__.'/../View/Vue_EndPage.php';
     }
 
-    /* Fonction permettant l'inscription */
+    /**
+     * Fonction permettant l'inscription
+     */
     public function inscription(){
         /* definition du tableau comportant les informations necessaire aux vues */
         $data= [
@@ -74,7 +79,10 @@ Class Admin {
             }
         }
     }
-    /* Fonction permettant l'envoi du mail d'inscription */
+
+    /**
+     * Fonction permettant l'envoi du mail d'inscription
+     */
     public function sendMail($pseudo,$email,$password){
         /* Initialisation des informations du mail */
         $to = $email;
