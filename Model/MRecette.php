@@ -136,6 +136,20 @@ class MRecette extends Base
 
     /**
      * @return bool|mysqli_result
+     * retourne les ingredients
+     */
+    public function getIngredient()
+    {
+        /* execution de la requete preparer */
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDI FROM INGREDIENT");
+        mysqli_stmt_execute($query);
+        /* retourne le resultat stocké dans result */
+        $result = mysqli_stmt_get_result($query);
+        return $result;
+    }
+
+    /**
+     * @return bool|mysqli_result
      * retourne la liste de toute les recettes
      */
     public function ListeRecette()
