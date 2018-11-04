@@ -1,7 +1,7 @@
 <div class="carousel slide" data-ride="carousel">
     <div class="carousel-inner w-100">
         <div class="carousel-item active">
-            <img src="/View/bootstrap-4.1.3-dist/image/background1.jpg" class="first-slide">
+            <img src="/View/bootstrap-4.1.3-dist/image/background1.jpg" class="first-slide" alt="slide">
         </div>
         <div class="carousel-item">
             <img class="second-slide" src="/View/bootstrap-4.1.3-dist/image/background2.jpg" alt="Second slide">
@@ -18,7 +18,7 @@
         echo '<a href="/Admin" class="btn btn-outline-danger my-2 my-sm-0">Inscription</a>'
     ?>
     <h2>Description de notre service</h2>
-    <p class="flow-text">Bienvenue sur notre site Cook & Burn !</br>Merci de nous avoir fait confiance pour la qualité de nous barbecue,
+    <p class="flow-text">Bienvenue sur notre site Cook & Burn !<br>Merci de nous avoir fait confiance pour la qualité de nous barbecue,
     vous pouvez maintenant vous connecter à ce site pour accéder à toutes les recettes que nos clients postent</p>
     <?php
         $mRecette = new MRecette();
@@ -28,8 +28,8 @@
     <h2>La Une</h2>
     <a href="/Recette/afficherRecette/<?=$alaUne?>" class="btn btn-outline-danger my-2 my-sm-0"><?= $nomALaUne ?></a>
     <h2>Liste des recettes</h2>
-    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">Un bon gros barbak des fafa</a></br>
-    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">viande a la plancha</a></br>
-    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">Poulet braisé</a></br>
+    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">Un bon gros barbak des fafa</a><br>
+    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">viande a la plancha</a><br>
+    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">Poulet braisé</a><br>
 </div>
 
