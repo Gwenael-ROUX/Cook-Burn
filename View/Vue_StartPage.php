@@ -15,7 +15,7 @@
 
     <link rel="icon" type="image/png" href="/View/bootstrap-4.1.3-dist/image/Icon.png"/>
 </head>
-<body class="text-center">
+<body class="text-center bg-light">
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

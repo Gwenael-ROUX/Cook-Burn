@@ -11,20 +11,25 @@
         </div>
     </div>
 </div>
-<h1>Index</h1>
-<?php echo $error;
-if ($_SESSION['ID'] && $_SESSION['ROLE']=='ADMIN')
-    echo '<a href="/Admin" class="waves-effect waves-light btn">Inscription</a>'
-?>
 <div>
+    <h1>Index</h1>
+    <?php echo $error;
+    if ($_SESSION['ID'] && $_SESSION['ROLE']=='ADMIN')
+        echo '<a href="/Admin" class="btn btn-outline-danger my-2 my-sm-0">Inscription</a>'
+    ?>
     <h2>Description de notre service</h2>
     <p class="flow-text">Bienvenue sur notre site Cook & Burn !</br>Merci de nous avoir fait confiance pour la qualité de nous barbecue,
     vous pouvez maintenant vous connecter à ce site pour accéder à toutes les recettes que nos clients postent</p>
+    <?php
+        $mRecette = new MRecette();
+        $alaUne = $mRecette->getALaUne();
+        $nomALaUne = $mRecette->getNom($alaUne);
+    ?>
     <h2>La Une</h2>
-    <a href="/Recette/afficherRecette/" class="waves-effect waves-light btn">Un bon gros barbak des fafa</a>
+    <a href="/Recette/afficherRecette/<?=$alaUne?>" class="btn btn-outline-danger my-2 my-sm-0"><?= $nomALaUne ?></a>
     <h2>Liste des recettes</h2>
-    <a href="/Recette/afficherRecette/" class="waves-effect waves-light btn">Un bon gros barbak des fafa</a></br>
-    <a href="/Recette/afficherRecette/" class="waves-effect waves-light btn">viande a la plancha</a></br>
-    <a href="/Recette/afficherRecette/" class="waves-effect waves-light btn">Poulet braisé</a></br>
+    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">Un bon gros barbak des fafa</a></br>
+    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">viande a la plancha</a></br>
+    <a href="/Recette/afficherRecette/" class="btn btn-outline-danger my-2 my-sm-0">Poulet braisé</a></br>
 </div>
 
