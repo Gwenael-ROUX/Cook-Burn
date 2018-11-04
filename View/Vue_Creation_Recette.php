@@ -28,7 +28,7 @@
                  </select>
                  <label>Quantité : </label>
                  <input id="quantite" type="number" name="quantite" min="0"/><br/><br/>
-                 <a class = "btn btn-outline-danger my-2 my-sm-0" href="/Recette/Ingredient"><input id="ajoutIngrédient" type="button" name="ajoutIngrédient" value="Ajouter ingrédient"/><a/>
+                 <a class = "btn btn-outline-danger my-2 my-sm-0" href="/Recette/Ingredient"><input id="ajoutIngrédient" type="button" name="ajoutIngrédient" value="Ajouter ingrédient"/>
             </div>
         </fieldset><br>
         <div>
