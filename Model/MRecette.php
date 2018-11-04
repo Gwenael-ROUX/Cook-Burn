@@ -28,6 +28,29 @@ class MRecette extends Base
         return $resultarray['IDR'];
     }
 
+    public function getNom ($idr)
+    {
+        $query = mysqli_prepare($this->getDbLink(),"SELECT NOMR FROM RECETTE R WHERE R.IDR=?");
+        mysqli_stmt_bind_param($query, "i", $idr);
+        mysqli_stmt_execute($query);
+        $result= mysqli_stmt_get_result($query);
+        $resultarray= mysqli_fetch_assoc($result);
+        return $resultarray['NOMR'];
+    }
+
+    public function getALaUne()
+    {
+        $total = 0;
+        $recettes = $this->ListeRecette();
+        while ($row = $recettes->fetch_array()){
+            if ($total < $this->getNbBurn($row['IDR'])) {
+                $total = $this->getNbBurn($row['IDR']);
+                $idr = $row['IDR'];
+            }
+        }
+        return $idr;
+    }
+
     public function getAuthor($idr)
     {
         $query = mysqli_prepare($this->getDbLink(),"SELECT PSEUDO FROM RECETTE R, USER U WHERE R.IDR=? AND R.IDU=U.IDU");
