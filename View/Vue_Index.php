@@ -14,6 +14,7 @@
 <div>
     <h1>Index</h1>
     <?php echo $error;
+    /* Si un utilisateur est un admin afficher lien page admin */
     if ($_SESSION['ID'] && $_SESSION['ROLE']=='ADMIN')
         echo '<a href="/Admin" class="btn btn-outline-danger my-2 my-sm-0">Inscription</a>'
     ?>
@@ -31,6 +32,7 @@
     <div>
         <?php
         if ($total > 0) {
+            /* Parcourir toutes les recettes de $result et les afficher */
             while ($row = mysqli_fetch_assoc($result)) { ?>
                 <label> Auteur : <?php echo $mRecette->getAuthor($row['IDR'])?> </label><br/>
                 <a href="/Recette/afficherRecette/<?php echo $row['IDR']?>"> <?php echo $row['NOMR']?> </a><br/><br/>

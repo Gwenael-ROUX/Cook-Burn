@@ -2,7 +2,8 @@
 <h2>Nombres de convives :</h2>
 <?= $result['NB_CONVIV'];?>
 <h2>Ingrédients :</h2>
-<?php while ($row = mysqli_fetch_assoc($result2)) {
+<?php /* afficher tous les ingredients de la recette */
+    while ($row = mysqli_fetch_assoc($result2)) {
         echo $row['NOM'];
         echo '  x';
         echo $row['QUANTITE'];
@@ -14,7 +15,8 @@
 <?= $result['DESCR_L'];?>
 <h2>Etapes :</h2>
 <?= $result['ETAPES'];?> <br/><br/>
-<?php if (! $_SESSION['PSEUDO'])
+<?php /* Permet a un utilisateur connecter d'acceder a "ajouter un burn" */
+    if (! $_SESSION['PSEUDO'])
           echo '<a href="../../Utilisateur" class="waves-effect waves-light btn">Ajouter un burn</a>';
       else
           echo '<a href="/Recette/burning/'.$result['IDR'].'/'.$_SESSION['ID'].'" class="waves-effect waves-light btn">Ajouter un burn</a>';
@@ -24,6 +26,7 @@
 <a href="/Compte" class="waves-effect waves-light btn">Ajouter à mes favoris</a>
 <h2>Nom du créateur :</h2>
 <p><? echo $mRecette->getAuthor($result['IDR']);?></p>
-<?php if ($_SESSION['PSEUDO'] == $mRecette->getAuthor($result['IDR']))
+<?php /* Permet a l'auteur de la recette de la supprimer */
+    if ($_SESSION['PSEUDO'] == $mRecette->getAuthor($result['IDR']))
     echo '<a href="/Recette/deleteRecette/'.$result['IDR'].'" class="waves-effect waves-light btn">Supprimer recette</a>';
 ?>

@@ -22,6 +22,7 @@
                      <?php
                         $mRecette = new MRecette();
                         $result = $mRecette->getIngredient();
+                        /* Parcourir tous les ingredients et les afficher */
                         while ($row = mysqli_fetch_assoc($result)) {?>
                             <option value="<?= $row['IDI'] ?>"><?=$mRecette->getNomIngr($row['IDI'])?></option>
                   <?php } ?>
