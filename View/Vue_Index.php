@@ -26,6 +26,5 @@ if ($_SESSION['ID'] && $_SESSION['ROLE']=='ADMIN')
     <a href="/Recette/afficherRecette/" class="waves-effect waves-light btn">Un bon gros barbak des fafa</a></br>
     <a href="/Recette/afficherRecette/" class="waves-effect waves-light btn">viande a la plancha</a></br>
     <a href="/Recette/afficherRecette/" class="waves-effect waves-light btn">Poulet braisé</a></br>
-    <a href="/Recette/creationRecette" class="waves-effect waves-light btn" >Creation recette</a>
 </div>
 

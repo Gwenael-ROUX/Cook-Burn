@@ -19,3 +19,6 @@
 <a href="/Compte" class="waves-effect waves-light btn">Ajouter à mes favoris</a>
 <h2>Nom du créateur :</h2>
 <p><? echo $mRecette->getAuthor($result['IDR']);?></p>
+<?php if ($_SESSION['PSEUDO'] == $mRecette->getAuthor($result['IDR']))
+    echo '<a href="/Recette/deleteRecette/'.$result['IDR'].'" class="waves-effect waves-light btn">Supprimer recette</a>';
+?>

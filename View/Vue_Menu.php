@@ -25,6 +25,10 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/Utilisateur/profil">Mon Compte</a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/Recette/mesRecettes">Mes recettes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/Recette/creationRecette">Ajouter recette</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/Utilisateur/deconnexion">Déconnexion</a>
                 </div>
             </li>

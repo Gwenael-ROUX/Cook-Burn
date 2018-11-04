@@ -17,12 +17,14 @@ class MRecette extends Base
         return mysqli_stmt_get_result($query);
     }
 
-    public function getIdr($nomR, $idu)
+    public function getIdr($idu, $nomR)
     {
         $query = mysqli_prepare($this->getDbLink(), "SELECT IDR FROM RECETTE WHERE IDU = ? AND  NOMR = ?");
         mysqli_stmt_bind_param($query, "is", $idu, $nomR);
         mysqli_stmt_execute($query);
-        return mysqli_stmt_get_result($query);
+        $result = mysqli_stmt_get_result($query);
+        $resultarray = mysqli_fetch_assoc($result);
+        return $resultarray['IDR'];
     }
 
     public function getAuthor($idr)
@@ -47,7 +49,16 @@ class MRecette extends Base
 
     public function ListeRecette()
     {
-        $query = mysqli_prepare($this->getDbLink(), "SELECT IDR, NOMR FROM RECETTE");
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDR, NOMR FROM RECETTE ORDER BY IDR DESC");
+        mysqli_stmt_execute($query);
+        $result = mysqli_stmt_get_result($query);
+        return $result;
+    }
+
+    public function mesRecettes($idu)
+    {
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDR, NOMR FROM RECETTE WHERE IDU = ? ORDER BY IDR DESC");
+        mysqli_stmt_bind_param($query, "i", $idu);
         mysqli_stmt_execute($query);
         $result = mysqli_stmt_get_result($query);
         return $result;

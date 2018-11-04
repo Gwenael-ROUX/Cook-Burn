@@ -98,8 +98,8 @@ class Recette
             exit();
         }
         else {
-            $recette = new MRecette();
-            $recette->ajouterRecette($idu,$nomr,$nbconviv,$descrc,$descrl,$etape);
+            $mRecette = new MRecette();
+            $this->mesRecettes();
         }
     }
 
@@ -116,4 +116,30 @@ class Recette
             exit;
         }
     }
+
+    public function deleteRecette ($idr)
+    {
+        $mRecette = new MRecette();
+        $mRecette->supprimerRecette($idr[0]);
+        $data= [
+            'titrePage'=>'Accueil',
+        ];
+        require_once  __DIR__.'/../View/Vue_StartPage.php';
+        require_once  __DIR__.'/../View/Vue_Index.php';
+        require_once  __DIR__.'/../View/Vue_EndPage.php';
+    }
+
+    public function mesRecettes ()
+    {
+        $data= [
+            'titrePage'=>'Mes recettes',
+        ];
+        require_once  __DIR__.'/../View/Vue_StartPage.php';
+        $mRecette = new MRecette();
+        $result = $mRecette->mesRecettes($_SESSION['ID']);
+        $total = mysqli_num_rows($result);
+        require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
+        require_once  __DIR__.'/../View/Vue_EndPage.php';
+    }
+
 }
