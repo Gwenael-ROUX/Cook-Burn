@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="media">
-            <a class="navbar-brand" href="/Index"><img src="/View/bootstrap-4.1.3-dist/image/Logo100x100.png" class="img-fluidti"/></a>
+            <a class="navbar-brand" href="/Index"><img src="/View/bootstrap-4.1.3-dist/image/Logo100x100.png" class="img-fluidti" alt="logo"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -4,7 +4,7 @@
 <h2>Ingrédients :</h2>
 <?php while ($row = mysqli_fetch_assoc($result2)) {
         echo $row['NOM'];
-        echo '  x ';
+        echo '  x';
         echo $row['QUANTITE'];
         echo '<br/>';
 } ?>

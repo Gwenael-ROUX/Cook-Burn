@@ -8,7 +8,9 @@
 
 class Erreur
 {
-    /* Fonction qui traite l'erreur de la permission d'administrateru */
+    /**
+     * Fonction qui traite l'erreur de la permission d'administrateru
+     */
     public function pasAdmin (){
         /* Definition du tableau comportant les informations necessaire aux vues */
         $data= [
@@ -20,7 +22,9 @@ class Erreur
         /* Affichage de la vue de fin de page */
         require_once __DIR__. '/../View/Vue_EndPage.php';
     }
-    /* Fonction qui traite l'erreur de la permission d'administrateru */
+    /**
+     * Fonction qui traite l'erreur de la permission d'administrateru
+     */
     public function erreur404(){
         /* Definition du tableau comportant les informations necessaire aux vues */
         $data= [

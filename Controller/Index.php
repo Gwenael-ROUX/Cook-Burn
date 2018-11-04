@@ -1,6 +1,9 @@
 <?php
 include  __DIR__."/../Model/MRecette.php";
 Class Index {
+    /**
+     * Fonction par defaut
+     */
     public function index($param = ''){
         $data= [
             'titrePage'=>'Accueil',

@@ -10,7 +10,9 @@ include_once __DIR__.'/../Model/MUtilisateur.php';
 
 class Utilisateur
 {
-    /* Fonction par defaut */
+    /**
+     * Fonction par defaut
+     */
     public function index(){
         /* Definition du tableau comportant les informations necessaire aux vues */
 
@@ -24,7 +26,9 @@ class Utilisateur
         /*  Affichage de la fin de page  */
         require_once  __DIR__."/../View/Vue_EndPage.php";
     }
-    /* Fonction qui permet la connection */
+    /**
+     * Fonction qui permet la connection
+     */
     public function seconnecter(){
 
         /* Recuperation des champs du formulaire */
@@ -70,7 +74,9 @@ class Utilisateur
         }
 
     }
-    /* Fonction de deconnexion */
+    /**
+     * Fonction de deconnexion
+     */
     public function deconnexion(){
         /* Destruction de la session */
         session_destroy();
@@ -91,7 +97,10 @@ class Utilisateur
         /*  Affichage de la fin de page  */
         require_once  __DIR__."/../View/Vue_EndPage.php";
     }
-    /* Fonction de changement de mot de passe */
+
+    /**
+     * Fonction de changement de mot de passe
+     */
     public function nouveauMdp(){
         /* Recuperation des champs du formulaire */
         $email = filter_input(INPUT_POST,'email');
@@ -119,7 +128,10 @@ class Utilisateur
             $user->MAJmotdepasse($email, md5($password));
         }
     }
-    /* Fonction d'affichage des informations du compte */
+
+    /**
+     * Fonction d'affichage des informations du compte
+     */
     public function profil(){
         /* Definition du tableau comportant les informations necessaire aux vues */
         $data= [
@@ -132,7 +144,10 @@ class Utilisateur
         /*  Affichage de la fin de page  */
         require_once  __DIR__."/../View/Vue_EndPage.php";
     }
-    /* Fonction de changement de mot de passe */
+
+    /**
+     * Fonction de changement de mot de passe
+     */
     public function changePwd(){
         /* Recuperation des champs du formulaire */
         $oldpwd = md5(filter_input(INPUT_POST,'oldPwd'));
@@ -152,7 +167,10 @@ class Utilisateur
                 }
         }
     }
-    /* Fonction de changement de pseudo2 */
+
+    /**
+     * Fonction de changement de pseudo2
+     */
     public function changePseudo(){
         /* Recuperation des champs du formulaire */
         $newPseudo = filter_input(INPUT_POST,'newPseudo');
@@ -169,7 +187,10 @@ class Utilisateur
             }
 
     }
-    /* Fonction de changement d'email */
+
+    /**
+     * Fonction de changement d'email
+     */
     public function changeEmail(){
         /* Recuperation des champs du formulaire */
         $newEmail = filter_input(INPUT_POST,'newEmail');
