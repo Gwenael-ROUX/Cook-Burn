@@ -15,7 +15,7 @@ Class Admin {
 
         /* Verification du role de l'utilisateur */
         if ($_SESSION['ROLE']== 'ADMIN'){
-            /* */
+            /* Affichage de l'inscription*/
             require_once __DIR__.'/../View/Vue_Inscription.php';
         }else{
             header("Location: /Erreur/pasAdmin");
