@@ -11,10 +11,11 @@ class MRecette extends Base
 {
     public function getIngrRec($idr)
     {
-        $query = mysqli_prepare($this->getDbLink(), "SELECT NOM, QUANTITE FROM INGREDIENT I, ASSO1 A WHERE I.IDR = A.IDR AND I.IDR = ?");
-        mysqli_stmt_bind_param($query, "is", $idr);
+        $query = mysqli_prepare($this->getDbLink(), "SELECT NOM, QUANTITE FROM INGREDIENT I, ASSO1 A WHERE I.IDI = A.IDI AND A.IDR = ?");
+        mysqli_stmt_bind_param($query, "i", $idr);
         mysqli_stmt_execute($query);
-        return mysqli_stmt_get_result($query);
+        $result = mysqli_stmt_get_result($query);
+        return $result;
     }
 
     public function getIdr($idu, $nomR)

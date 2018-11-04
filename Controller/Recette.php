@@ -44,6 +44,7 @@ class Recette
     public function afficherRecette ($idr){
         $mRecette = new MRecette();
         $result = $mRecette->afficherRecette($idr[0]);
+        $result2 = $mRecette->getIngrRec($idr[0]);
 
         $data= [
             'titrePage' => $result['NOMR'],
