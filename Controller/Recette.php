@@ -15,7 +15,7 @@ class Recette
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
-    public function creationRecette($param){
+    public function creationRecette(){
         $data= [
             'titrePage'=>'Creation de Recette',
         ];
@@ -76,7 +76,8 @@ class Recette
         $descrc = filter_input(INPUT_POST,'descrc');
         $descrl = filter_input(INPUT_POST,'descrl');
         $etape = filter_input(INPUT_POST,'etape');
-
+        $ingredient = filter_input(INPUT_POST, 'ingredient');
+        $quantite = filter_input(INPUT_POST, 'quantite');
 
         if (empty($nomr)){
             header('Location: ../Controller/admin.php?step=NOM_R_I');
@@ -100,7 +101,11 @@ class Recette
         }
         else {
             $mRecette = new MRecette();
-            $this->mesRecettes();
+            $mRecette->ajouterRecette($idu, $nomr, $nbconviv, $descrc, $descrl, $etape);
+            $idr = $mRecette->getIdr($idu, $nomr);
+            $mRecette->ajouterAsso($ingredient, $quantite, $idr);
+            header('Location: /Recette/listeRecette');
+            exit();
         }
     }
 
@@ -143,4 +148,29 @@ class Recette
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
+    public function Ingredient()
+    {
+        $data=[
+            'titrePage'=>'Ajouter Ingrédient'
+        ];
+        require_once __DIR__.'/../View/Vue_StartPage.php';
+        require_once __DIR__.'/../View/Vue_AjouterIngredient.php';
+        require_once  __DIR__.'/../View/Vue_EndPage.php';
+    }
+
+    public function ajouterIngredient()
+    {
+        $idu = $_SESSION['ID'];
+        $nomi = filter_input(INPUT_POST,'nomi');
+        if (empty($nomi)){
+            header('Location: ../Controller/admin.php?step=NOM_I');
+            exit();
+        }
+        else {
+            $mRecette = new MRecette();
+            $mRecette->ajouterIngredient($idu, $nomi);
+            header('Location: /Recette/creationRecette');
+            exit();
+        }
+    }
 }

@@ -9,6 +9,7 @@
 include 'Base.php';
 class MRecette extends Base
 {
+    public $ALaUne = 25;
     public function getIngrRec($idr)
     {
         $query = mysqli_prepare($this->getDbLink(), "SELECT NOM, QUANTITE FROM INGREDIENT I, ASSO1 A WHERE I.IDI = A.IDI AND A.IDR = ?");
@@ -16,6 +17,24 @@ class MRecette extends Base
         mysqli_stmt_execute($query);
         $result = mysqli_stmt_get_result($query);
         return $result;
+    }
+
+    public function getIngredient()
+    {
+        $query = mysqli_prepare($this->getDbLink(), "SELECT IDI FROM INGREDIENT");
+        mysqli_stmt_execute($query);
+        $result = mysqli_stmt_get_result($query);
+        return $result;
+    }
+
+    public function getNomIngr($idi)
+    {
+        $query = mysqli_prepare($this->getDbLink(), "SELECT NOM FROM INGREDIENT WHERE IDI=?");
+        mysqli_stmt_bind_param($query, "i", $idi);
+        mysqli_stmt_execute($query);
+        $result = mysqli_stmt_get_result($query);
+        $resultarray= mysqli_fetch_assoc($result);
+        return $resultarray['NOM'];
     }
 
     public function getIdr($idu, $nomR)
@@ -38,17 +57,14 @@ class MRecette extends Base
         return $resultarray['NOMR'];
     }
 
+    public function setALaUne($idr)
+    {
+        $this->ALaUne = $idr;
+    }
+
     public function getALaUne()
     {
-        $total = 0;
-        $recettes = $this->ListeRecette();
-        while ($row = $recettes->fetch_array()){
-            if ($total < $this->getNbBurn($row['IDR'])) {
-                $total = $this->getNbBurn($row['IDR']);
-                $idr = $row['IDR'];
-            }
-        }
-        return $idr;
+        return $this->ALaUne;
     }
 
     public function getAuthor($idr)
@@ -149,6 +165,22 @@ class MRecette extends Base
     {
         $query = mysqli_prepare ($this->getDbLink(), 'INSERT INTO BURN VALUES (null, ?, ?)');
         mysqli_stmt_bind_param($query, 'ii', $idu,$idr);
+        mysqli_stmt_execute($query);
+        if ($this->getNbBurn($idr) == 15)
+            $this->setALaUne($idr);
+    }
+
+    public function ajouterIngredient($idu, $nomi)
+    {
+        $query = mysqli_prepare ($this->getDbLink(), 'INSERT INTO INGREDIENT VALUES (null, ?, ?)');
+        mysqli_stmt_bind_param($query, 'is', $idu,$nomi);
+        mysqli_stmt_execute($query);
+    }
+
+    public function ajouterAsso($idi, $quantite, $idr)
+    {
+        $query = mysqli_prepare ($this->getDbLink(), "INSERT INTO ASSO1 VALUES (null, ?, ?, ?)");
+        mysqli_stmt_bind_param($query, 'iis', $idi, $idr, $quantite);
         mysqli_stmt_execute($query);
     }
 }

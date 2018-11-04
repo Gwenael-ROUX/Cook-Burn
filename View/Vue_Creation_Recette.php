@@ -16,6 +16,19 @@
 
                  <br><strong><label>Etapes : </label></strong>
                  <textarea id="etape"  rows="4" cols="50" name="etape"></textarea>
+
+                 <br><strong><label>Ingrédients :</label></strong> <br/>
+                 <select id="ingredient" name="ingredient">
+                     <?php
+                        $mRecette = new MRecette();
+                        $result = $mRecette->getIngredient();
+                        while ($row = mysqli_fetch_assoc($result)) {?>
+                            <option value="<?= $row['IDI'] ?>"><?=$mRecette->getNomIngr($row['IDI'])?></option>
+                  <?php } ?>
+                 </select>
+                 <label>Quantité : </label>
+                 <input id="quantite" type="number" name="quantite" min="0"/><br/><br/>
+                 <a class = "btn btn-outline-danger my-2 my-sm-0" href="/Recette/Ingredient"><input id="ajoutIngrédient" type="button" name="ajoutIngrédient" value="Ajouter ingrédient"/><a/>
             </div>
         </fieldset><br>
         <div>
