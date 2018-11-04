@@ -2,7 +2,7 @@
 
 include_once __DIR__.'/../Model/MUtilisateur.php';
 Class Admin {
-    /* Fonction d'affichage par defaut */
+    /* Fonction par defaut */
     public function index (){
 
         /* Definition du tableau comportant les informations necessaire aux vues */
