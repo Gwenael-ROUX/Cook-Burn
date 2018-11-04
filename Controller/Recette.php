@@ -3,44 +3,58 @@
 include  __DIR__."/../Model/MRecette.php";
 class Recette
 {
+    /**
+     * Fonction par défaut
+     */
     public function index($param){
         $data= [
             'titrePage'=>'Recette',
         ];
 
+        /* Appelle des différentes vues */
         require_once  __DIR__.'/../View/Vue_StartPage.php';
-
         require_once  __DIR__.'/../View/Vue_Recette.php';
-
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
+    /**
+     * Charge la page création recette
+     */
     public function creationRecette(){
         $data= [
             'titrePage'=>'Creation de Recette',
         ];
 
+        /* Appelle des différentes vues */
         require_once  __DIR__.'/../View/Vue_StartPage.php';
-
         require_once  __DIR__.'/../View/Vue_Creation_Recette.php';
-
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
+    /**
+     * Genere et charge la page liste recette
+     */
     public function listeRecette(){
         $data= [
             'titrePage'=>'Liste des Recettes',
         ];
 
-        require_once  __DIR__.'/../View/Vue_StartPage.php';
+        /* Appelle la fonction ListeRecette de MRecette et stocke le resultat dans $result */
         $mRecette = new MRecette();
         $result = $mRecette->ListeRecette();
-        $total = mysqli_num_rows($result);
-        require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
 
+        /* stocke le nombre de tuple dans $total */
+        $total = mysqli_num_rows($result);
+
+        /* Appelle des différentes vues */
+        require_once  __DIR__.'/../View/Vue_StartPage.php';
+        require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
+    /**
+     * Genere et charge la page pour afficher une recette
+     */
     public function afficherRecette ($idr){
         $mRecette = new MRecette();
         $result = $mRecette->afficherRecette($idr[0]);
@@ -55,15 +69,23 @@ class Recette
         require_once  __DIR__.'/../View/Vue_EndPage.php';
     }
 
+    /**
+     * Genere et charge la page de recherche d'une recette
+     */
     public function searchRecette()
     {
         $data= [
             'titrePage'=>'Recherche Recette',
         ];
         require_once  __DIR__.'/../View/Vue_StartPage.php';
+
+        /* recupere les données de la barre de recherche */
         $recherche = filter_input(INPUT_POST,'recherche');
+
+        /* Appelle la fonction searchrecette de MRecette et stock le resultat dans $result */
         $mRecette = new MRecette();
         $result = $mRecette->searchRecette($recherche);
+
         $total = mysqli_num_rows($result);
         require_once  __DIR__.'/../View/Vue_Liste_Recette.php';
         require_once  __DIR__.'/../View/Vue_EndPage.php';
